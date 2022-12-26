@@ -29,6 +29,8 @@ function parseValue(val: any): any {
     return val.map((item) => parseValue(item));
   } else if (typeof val === 'object') {
     return parseObject(val);
+  } else if (typeof val === 'bigint') {
+    return val.toString();
   } else {
     return val;
   }

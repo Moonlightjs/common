@@ -1,4 +1,5 @@
 export * from './class-validator';
+export * from './controller';
 export * from './dto';
 export * from './exception';
 export * from './filter';
