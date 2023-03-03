@@ -7,5 +7,6 @@ export * from './interceptor';
 export * from './metadata';
 export * from './middleware';
 export * from './pipe';
+export * from './prisma';
 export * from './swagger';
 export * from './type';
