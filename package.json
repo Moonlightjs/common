@@ -20,6 +20,8 @@
   "license": "ISC",
   "scripts": {
     "release": "standard-version && git push --follow-tags && npm run module && cd module && npm publish --access public",
+    "release-alpha": "standard-version --prerelease alpha && git push --follow-tags && npm run module && cd module && npm publish --access public",
+    "release-beta": "standard-version --prerelease beta && git push --follow-tags && npm run module && cd module && npm publish --access public",
     "prebuild": "rimraf dist",
     "build": "npm run prebuild && tsc --build tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
