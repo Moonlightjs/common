@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 type Response<T> = SuccessResponseDto<T> | SuccessResponsePagedDto<T>;
 
 @Injectable()
-export class TransformInterceptor<T>
+export class TransformInterceptor<T = any>
   implements NestInterceptor<T, Response<T>>
 {
   intercept(

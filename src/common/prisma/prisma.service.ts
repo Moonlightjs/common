@@ -23,7 +23,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   ) {
     super(prismaServiceOptions.prismaOptions);
 
-    console.log(this.prismaServiceOptions.events);
     if (this.prismaServiceOptions.events) {
       Object.keys(this.prismaServiceOptions.events).forEach((eventName) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

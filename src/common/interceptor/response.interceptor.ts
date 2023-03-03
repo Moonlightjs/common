@@ -16,7 +16,9 @@ interface Response<T> {
 }
 
 @Injectable()
-export class ResponseInterceptor<T> implements NestInterceptor<T, Response<T>> {
+export class ResponseInterceptor<T = any>
+  implements NestInterceptor<T, Response<T>>
+{
   private readonly logger = new Logger(ResponseInterceptor.name);
 
   intercept(
