@@ -5,10 +5,21 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { isLogException } from '@utils/env';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
   catch(exception: any, host: ArgumentsHost) {
+    if (isLogException()) {
+      console.log(
+        '🚀 ----------------------------------------------------------------------------------------🚀',
+      );
+      console.error('[GlobalExceptionFilter] ~exception:', exception);
+      console.log(
+        '🚀 ----------------------------------------------------------------------------------------🚀',
+      );
+    }
+
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
@@ -27,11 +38,12 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     }
     response.status(status).json({
       statusCode: status,
+      code: exception?.response?.code,
       timestamp: new Date().toISOString(),
       message: messageError || '',
       path: request.url,
-      error: exception?.cause?.response?.error,
-      errors: exception?.cause?.response?.errors,
+      error: exception?.response?.error,
+      errors: exception?.response?.errors,
     });
   }
 }

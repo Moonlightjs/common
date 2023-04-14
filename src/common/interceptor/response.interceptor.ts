@@ -8,6 +8,7 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { isLogException } from '@utils/env';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -31,7 +32,15 @@ export class ResponseInterceptor<T = any>
         return data;
       }),
       catchError((e) => {
-        console.error(e);
+        if (isLogException()) {
+          console.log(
+            '🚀 ----------------------------------------------------------🚀',
+          );
+          console.log('[ResponseInterceptor] ~catchError:', e);
+          console.log(
+            '🚀 ----------------------------------------------------------🚀',
+          );
+        }
         this.logger.error(`InternalServerError: ${JSON.stringify(e)}`);
         if (e instanceof Prisma.PrismaClientKnownRequestError) {
           if (e.code === 'P2002') {
