@@ -1,6 +1,6 @@
 {
   "name": "@moonlightjs/common",
-  "version": "0.1.2-beta.0",
+  "version": "0.1.2-beta.1",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": {
