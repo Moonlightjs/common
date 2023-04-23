@@ -1,3 +1,4 @@
+export * from './common';
 export * from './interfaces';
 export * from './log-query.event';
 export * from './logging.middleware';

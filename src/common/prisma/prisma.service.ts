@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   INestApplication,
   Inject,
   Injectable,
@@ -9,7 +8,6 @@ import {
   Scope,
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
-import * as httpContext from 'express-http-context';
 import { PrismaServiceOptions } from './interfaces';
 import { PRISMA_SERVICE_OPTIONS } from './prisma.constants';
 

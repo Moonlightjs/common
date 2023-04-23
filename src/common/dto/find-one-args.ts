@@ -8,8 +8,12 @@ export class FindOneArgs {
   include?: Record<string, any> | null;
   @ApiProperty({ type: 'object', required: false })
   where?: Record<string, any>;
+  @ApiProperty({ type: 'object', required: false })
+  orderBy?: Prisma.Enumerable<Record<string, Prisma.SortOrder>>;
+  @ApiProperty({ type: 'number', required: false })
+  skip?: number;
   @ApiProperty()
   distinct?: Prisma.Enumerable<Record<string, any>>;
   @ApiProperty({ type: 'object', required: false })
-  orderBy?: Prisma.Enumerable<Record<string, Prisma.SortOrder>>;
+  cursor?: Record<string, any>;
 }

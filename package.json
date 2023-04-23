@@ -1,6 +1,6 @@
 {
   "name": "@moonlightjs/common",
-  "version": "0.1.2-beta.1",
+  "version": "0.1.2-beta.2",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": {
@@ -19,15 +19,17 @@
   "description": "",
   "license": "ISC",
   "scripts": {
-    "release": "np --no-yarn --yolo --no-publish --branch=main --no-release-draft && npm run module && cd module && npm publish --access public",
-    "prerelease": "np prerelease --no-yarn --yolo --no-publish --branch=develop --no-release-draft && npm run module && cd module && npm publish --access public",
+    "release": "standard-version -a && git push --follow-tags && npm run module && cd module && npm publish --access public",
+    "prerelease-alpha": "standard-version --prerelease alpha && git push --follow-tags && npm run module && cd module && npm publish --access public --tag alpha",
+    "prerelease-beta": "standard-version -a --prerelease beta && git push --follow-tags && npm run module && cd module && npm publish --access public --tag beta",
     "prebuild": "rimraf dist",
     "build": "npm run prebuild && tsc --build tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prisma": "prisma",
     "module": "npm run build && node ./module.js",
-    "ts-node": "ts-node"
+    "ts-node": "ts-node",
+    "standard-version": "standard-version"
   },
   "dependencies": {
     "@nestjs/common": "^9.3.9",

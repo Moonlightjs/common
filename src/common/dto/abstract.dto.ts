@@ -44,9 +44,9 @@ export type PagedResultDtoPayload<TDto> = {
 };
 
 export class PagedResultDto<TDto> {
-  @ApiProperty()
+  @ApiProperty({ type: () => Pagination })
   public readonly pagination: Pagination;
-  @ApiProperty()
+  @ApiProperty({ isArray: true })
   public readonly data: TDto[];
   constructor(pagination: Pagination, data: TDto[]) {
     this.pagination = pagination;
@@ -61,9 +61,9 @@ export class PagedResultDto<TDto> {
 }
 
 export class SuccessResponsePagedDto<TDto> {
-  @ApiProperty({ type: Pagination })
+  @ApiProperty({ type: () => Pagination })
   public readonly pagination: Pagination;
-  @ApiProperty()
+  @ApiProperty({ isArray: true })
   public readonly data: TDto[];
   @ApiProperty()
   public readonly success: boolean;
